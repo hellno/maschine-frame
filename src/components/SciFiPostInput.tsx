@@ -61,7 +61,7 @@ export default function SciFiPostInput() {
         <form onSubmit={handleSubmit} className="relative z-10">
           <div className="mb-8">
             <GlitchText
-              text="farcaster_transmission_for_@maschine"
+              text="farcaster_transmission for @maschine"
               className="text-3xl font-bold text-cyan-500 mb-2 font-['Orbitron']"
             />
             <p className="text-cyan-400 font-['Orbitron']"></p>
