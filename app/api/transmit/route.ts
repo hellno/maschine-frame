@@ -6,9 +6,9 @@ const ALLOWED_ORIGINS = [process.env.APP_URL, 'http://localhost:3000']
 
 // Get CSRF token from cookie
 function getStoredCSRFToken(cookieHeader: string | null): string | null {
-  if (!cookieHeader) return null
-  const match = cookieHeader.match(/csrf_token=([^;]+)/)
-  return match ? match[1] : null
+  if (!cookieHeader) return null;
+  const match = cookieHeader.match(/csrf_token=([^;]+)/);
+  return match?.[1] ?? null;  // Use optional chaining and nullish coalescing
 }
 
 export async function POST(request: Request) {
