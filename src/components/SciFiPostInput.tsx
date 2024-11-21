@@ -1,10 +1,19 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { generateCSRFToken } from "@/utils/csrf";
 import { SciFiNavbar } from "./SciFiNavbar";
 
 export default function SciFiPostInput() {
   const [postContent, setPostContent] = useState("");
+  const [csrfToken, setCsrfToken] = useState("");
+
+  useEffect(() => {
+    // Generate and store CSRF token in cookie when component mounts
+    const token = generateCSRFToken();
+    document.cookie = `csrf_token=${token}; path=/; SameSite=Strict`;
+    setCsrfToken(token);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -15,7 +24,10 @@ export default function SciFiPostInput() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ text: postContent }),
+        body: JSON.stringify({ 
+          text: postContent,
+          csrfToken: csrfToken 
+        }),
       });
 
       const data = await response.json();

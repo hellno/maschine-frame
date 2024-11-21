@@ -1,7 +1,15 @@
 import { headers } from 'next/headers'
+import { validateCSRFToken } from '@/utils/csrf'
 
 // Whitelist of allowed origins
 const ALLOWED_ORIGINS = [process.env.APP_URL, 'http://localhost:3000']
+
+// Get CSRF token from cookie
+function getStoredCSRFToken(cookieHeader: string | null): string | null {
+  if (!cookieHeader) return null
+  const match = cookieHeader.match(/csrf_token=([^;]+)/)
+  return match ? match[1] : null
+}
 
 export async function POST(request: Request) {
   const headersList = headers()
@@ -24,7 +32,18 @@ export async function POST(request: Request) {
   }
 
   try {
-    const { text } = await request.json()
+    const { text, csrfToken } = await request.json()
+    
+    // Validate CSRF token
+    const cookieHeader = headersList.get('cookie')
+    const storedToken = getStoredCSRFToken(cookieHeader)
+    
+    if (!validateCSRFToken(csrfToken, storedToken)) {
+      return new Response(
+        JSON.stringify({ error: "Invalid CSRF token" }), 
+        { status: 403 }
+      )
+    }
     
     // Placeholder URL - replace with actual endpoint
     const EXTERNAL_API_URL = 'https://api.example.com/transmit'
