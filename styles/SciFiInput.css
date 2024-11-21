@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+.sci-fi-input {
+  @apply bg-transparent border-2 border-cyan-400/50 text-cyan-300 placeholder-cyan-500/50;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3), inset 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+.sci-fi-button {
+  @apply bg-red-600 text-white font-bold uppercase tracking-wider;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+.sci-fi-button:hover {
+  @apply bg-red-700;
+  box-shadow: 0 0 30px rgba(255, 0, 0, 0.8), inset 0 0 15px rgba(255, 255, 255, 0.8);
+}
+
+.holographic-overlay {
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 255, 255, 0.1) 0px,
+    rgba(0, 255, 255, 0.1) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+}
+
+.grid-background {
+  background-size: 50px 50px;
+  background-image:
+    linear-gradient(to right, rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+  animation: grid-movement 20s linear infinite;
+}
+
+@keyframes grid-movement {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+.glow-effect {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.3), 0 0 30px rgba(0, 255, 255, 0.1);
+  }
+  to {
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 0 0 40px rgba(0, 255, 255, 0.5), 0 0 60px rgba(0, 255, 255, 0.3);
+  }
+}
+
