@@ -139,37 +139,30 @@
 
 @keyframes glitch-flicker {
   0%, 100% { opacity: 1; }
-  31.98%, 32% { opacity: 1; }
-  32.02%, 32.04% { opacity: 0.8; }
-  32.05%, 32.06% { opacity: 0.4; }
-  32.07%, 32.08% { opacity: 1; }
+  32% { opacity: 1; }
+  33% { opacity: 0.8; }
+  34% { opacity: 0.4; }
+  35% { opacity: 1; }
 }
 
 @keyframes glitch-char-1 {
-  0% { opacity: 0; }
-  90% { opacity: 0; }
-  90.1% { opacity: 1; transform: translate(-2px, -2px); }
-  90.2% { opacity: 0; transform: translate(0, 0); }
-  90.3% { opacity: 1; transform: translate(2px, 2px); }
-  90.4% { opacity: 0; transform: translate(0, 0); }
-  90.5% { opacity: 1; transform: translate(-2px, 2px); }
-  90.6% { opacity: 0; transform: translate(0, 0); }
-  90.7% { opacity: 1; transform: translate(2px, -2px); }
-  90.8% { opacity: 0; }
+  0%, 89% { opacity: 0; }
+  90% { opacity: 1; transform: translate(-2px, -2px); }
+  92% { opacity: 0; transform: translate(0, 0); }
+  94% { opacity: 1; transform: translate(2px, 2px); }
+  96% { opacity: 0; transform: translate(0, 0); }
+  98% { opacity: 1; transform: translate(-2px, 2px); }
   100% { opacity: 0; }
 }
 
 @keyframes glitch-char-2 {
-  0% { opacity: 0; }
-  80% { opacity: 0; }
-  80.1% { opacity: 1; transform: translate(-1px, 1px); }
-  80.2% { opacity: 0; transform: translate(0, 0); }
-  80.3% { opacity: 1; transform: translate(1px, -1px); }
-  80.4% { opacity: 0; transform: translate(0, 0); }
-  80.5% { opacity: 1; transform: translate(1px, 1px); }
-  80.6% { opacity: 0; transform: translate(0, 0); }
-  80.7% { opacity: 1; transform: translate(-1px, -1px); }
-  80.8% { opacity: 0; }
+  0%, 79% { opacity: 0; }
+  80% { opacity: 1; transform: translate(-1px, 1px); }
+  82% { opacity: 0; transform: translate(0, 0); }
+  84% { opacity: 1; transform: translate(1px, -1px); }
+  86% { opacity: 0; transform: translate(0, 0); }
+  88% { opacity: 1; transform: translate(1px, 1px); }
+  90% { opacity: 0; }
   100% { opacity: 0; }
 }
 
