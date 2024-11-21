@@ -1,6 +1,19 @@
 import { NextResponse } from 'next/server'
+import { headers } from 'next/headers'
 
 export async function POST(request: Request) {
+  // Check origin
+  const headersList = headers()
+  const origin = headersList.get('origin')
+  
+  // Only allow requests from same origin
+  if (origin !== process.env.APP_URL && origin !== 'http://localhost:3000') {
+    return NextResponse.json(
+      { error: "Unauthorized origin" },
+      { status: 403 }
+    )
+  }
+
   try {
     const { text } = await request.json()
     
