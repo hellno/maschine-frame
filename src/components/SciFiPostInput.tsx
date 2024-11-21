@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { SciFiNavbar } from "./SciFiNavbar";
 
 export default function SciFiPostInput() {
   const [postContent, setPostContent] = useState("");
@@ -15,6 +16,7 @@ export default function SciFiPostInput() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-900 relative overflow-hidden">
+      <SciFiNavbar />
       <div className="grid-background absolute inset-0 opacity-50"></div>
       <div className="w-full max-w-4xl p-8 rounded-lg backdrop-blur-sm bg-black/30 relative overflow-hidden glow-effect">
         <div className="holographic-overlay absolute inset-0 pointer-events-none"></div>
