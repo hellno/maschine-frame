@@ -18,32 +18,34 @@ export default function SciFiPostInput() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     try {
-      const response = await fetch('/api/transmit', {
-        method: 'POST',
+      const response = await fetch("/api/transmit", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({ 
+        body: JSON.stringify({
           text: postContent,
-          csrfToken: csrfToken 
+          csrfToken: csrfToken,
         }),
       });
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to transmit message');
+        throw new Error(data.error || "Failed to transmit message");
       }
 
       // Show the response message
-      alert(data.error || 'Message transmitted successfully');
-      
+      alert(data.error || "Message transmitted successfully");
+
       // Reset the input field
       setPostContent("");
     } catch (error) {
-      alert(error instanceof Error ? error.message : 'Failed to transmit message');
+      alert(
+        error instanceof Error ? error.message : "Failed to transmit message",
+      );
     }
   };
 
@@ -54,17 +56,15 @@ export default function SciFiPostInput() {
         <div className="grid-background absolute inset-0"></div>
         <div className="grid-overlay absolute inset-0"></div>
       </div>
-      <div className="w-full max-w-4xl p-8 rounded-lg backdrop-blur-sm bg-black/20 relative overflow-hidden glow-effect">
+      <div className="w-full max-w-4xl p-8 rounded-lg backdrop-blur-xl bg-black/20 relative overflow-hidden glow-effect">
         <div className="holographic-overlay absolute inset-0 pointer-events-none"></div>
         <form onSubmit={handleSubmit} className="relative z-10">
           <div className="mb-8">
-            <GlitchText 
-              text="MISSION BRIEFING"
-              className="text-3xl font-bold text-cyan-300 mb-2 font-['Orbitron']"
+            <GlitchText
+              text="farcaster_transmission_for_@maschine"
+              className="text-3xl font-bold text-cyan-500 mb-2 font-['Orbitron']"
             />
-            <p className="text-cyan-400 font-['Orbitron']">
-              ENTER TRANSMISSION FOR @maschine
-            </p>
+            <p className="text-cyan-400 font-['Orbitron']"></p>
           </div>
           <textarea
             className="sci-fi-input w-full h-40 p-4 rounded-md font-mono text-lg resize-none mb-6"
