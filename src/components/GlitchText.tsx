@@ -18,8 +18,13 @@ export function GlitchText({ text, className = "" }: GlitchTextProps) {
   return (
     <div className={`glitch-wrapper ${className}`}>
       {text.split('').map((char, index) => (
-        <span key={index} className="glitch-char" data-char={char}>
-          {char}
+        <span 
+          key={index} 
+          className={`glitch-char ${char === ' ' ? 'glitch-space' : ''}`} 
+          data-char={char}
+          aria-hidden={char === ' ' ? 'true' : 'false'}
+        >
+          {char === ' ' ? '\u00A0' : char}
         </span>
       ))}
     </div>

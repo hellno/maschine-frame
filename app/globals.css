@@ -142,6 +142,17 @@
   left: -2px;
 }
 
+.glitch-space {
+  display: inline-block;
+  width: 0.5em; /* Adjust this value to control space width */
+}
+
+/* Disable glitch animations for spaces */
+.glitch-space::before,
+.glitch-space::after {
+  display: none;
+}
+
 @keyframes glitch-flicker {
   0%, 31%, 35%, 100% { opacity: 1; }
   33% { opacity: 0.8; }
