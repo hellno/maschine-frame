@@ -53,7 +53,7 @@ export default function SciFiPostInput() {
         <div className="grid-background absolute inset-0"></div>
         <div className="grid-overlay absolute inset-0"></div>
       </div>
-      <div className="w-full max-w-4xl p-8 rounded-lg backdrop-blur-sm bg-black/30 relative overflow-hidden glow-effect">
+      <div className="w-full max-w-4xl p-8 rounded-lg backdrop-blur-sm bg-black/20 relative overflow-hidden glow-effect">
         <div className="holographic-overlay absolute inset-0 pointer-events-none"></div>
         <form onSubmit={handleSubmit} className="relative z-10">
           <div className="mb-8">
