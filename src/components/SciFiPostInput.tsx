@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { generateCSRFToken } from "@/utils/csrf";
 import { SciFiNavbar } from "./SciFiNavbar";
+import { GlitchText } from "./GlitchText";
 
 export default function SciFiPostInput() {
   const [postContent, setPostContent] = useState("");
@@ -57,9 +58,10 @@ export default function SciFiPostInput() {
         <div className="holographic-overlay absolute inset-0 pointer-events-none"></div>
         <form onSubmit={handleSubmit} className="relative z-10">
           <div className="mb-8">
-            <h2 className="text-3xl font-bold text-cyan-300 mb-2 font-['Orbitron']">
-              MISSION BRIEFING
-            </h2>
+            <GlitchText 
+              text="MISSION BRIEFING"
+              className="text-3xl font-bold text-cyan-300 mb-2 font-['Orbitron']"
+            />
             <p className="text-cyan-400 font-['Orbitron']">
               ENTER TRANSMISSION FOR @maschine
             </p>
