@@ -8,8 +8,7 @@ export default function SciFiPostInput() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle the submission logic here
-    console.log("Posting:", postContent);
+    alert("Transmission functionality not yet implemented");
     // Reset the input field
     setPostContent("");
   };
