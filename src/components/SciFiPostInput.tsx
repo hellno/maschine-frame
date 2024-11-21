@@ -6,11 +6,32 @@ import { SciFiNavbar } from "./SciFiNavbar";
 export default function SciFiPostInput() {
   const [postContent, setPostContent] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert("Transmission functionality not yet implemented");
-    // Reset the input field
-    setPostContent("");
+    
+    try {
+      const response = await fetch('/api/transmit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ text: postContent }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to transmit message');
+      }
+
+      // Show the response message
+      alert(data.error || 'Message transmitted successfully');
+      
+      // Reset the input field
+      setPostContent("");
+    } catch (error) {
+      alert(error instanceof Error ? error.message : 'Failed to transmit message');
+    }
   };
 
   return (
