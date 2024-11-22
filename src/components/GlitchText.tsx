@@ -9,8 +9,8 @@ interface GlitchTextProps {
 
 export function GlitchText({ text, className = "" }: GlitchTextProps) {
   React.useEffect(() => {
-    const chars = document.querySelectorAll('.glitch-char');
-    chars.forEach((char, index) => {
+    const chars = document.querySelectorAll<HTMLElement>('.glitch-char');
+    chars.forEach((char) => {
       char.style.setProperty('--char-index', Math.random().toString());
     });
   }, [text]);
