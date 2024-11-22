@@ -17,12 +17,8 @@ const RetroBackground = () => (
 
 // Close Button Component
 const CloseButton = ({ onClose }: { onClose: () => void }) => (
-  <button 
-    className="close-button" 
-    onClick={onClose}
-    aria-label="Close window"
-  >
-    ×
+  <button className="close-button" onClick={onClose} aria-label="Close window">
+    X
   </button>
 );
 
@@ -30,8 +26,13 @@ const CloseButton = ({ onClose }: { onClose: () => void }) => (
 const FormHeader = () => (
   <div className="mb-8">
     <GlitchText
-      text="@maschine: transmission to farcaster"
-      className="text-3xl font-bold text-cyan-500 mb-2 font-['Orbitron']"
+      text="@maschine"
+      className="text-4xl md:text-6xl font-bold text-cyan-500 mb-2 font-['Orbitron']"
+    />
+    <br />
+    <GlitchText
+      text="your unhinged transmission to farcaster..."
+      className="text-xl md:text-2xl font-bold text-cyan-500 mb-2 font-['Orbitron']"
     />
     <p className="text-cyan-400 font-['Orbitron'] tracking-wider"></p>
   </div>
@@ -50,7 +51,7 @@ const TransmissionForm = ({
   <form onSubmit={handleSubmit} className="relative z-10">
     <FormHeader />
     <textarea
-      className="sci-fi-input w-full h-40 p-4 rounded-md font-['Orbitron'] text-lg resize-none mb-6"
+      className="sci-fi-input w-full h-32 sm:h-40 p-3 sm:p-4 rounded-md font-['Orbitron'] text-base sm:text-lg resize-none mb-4 sm:mb-6"
       placeholder="What do you want @maschine to post about?"
       value={postContent}
       onChange={(e) => setPostContent(e.target.value)}
@@ -58,7 +59,7 @@ const TransmissionForm = ({
     <div className="flex justify-end">
       <button
         type="submit"
-        className="sci-fi-button py-3 px-8 rounded-md text-lg font-['Orbitron'] tracking-wider"
+        className="sci-fi-button py-2 sm:py-3 px-6 sm:px-8 rounded-md text-base sm:text-lg font-['Orbitron'] tracking-wider"
       >
         TRANSMIT
       </button>
@@ -112,11 +113,11 @@ export default function SciFiPostInput() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900 relative overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center bg-gray-900 relative overflow-hidden px-4 py-20 sm:px-6 lg:px-8">
       <SciFiNavbar />
       <RetroBackground />
       {isVisible && (
-        <div className="sci-fi-window w-full max-w-4xl p-8 relative">
+        <div className="sci-fi-window w-full max-w-[95vw] sm:max-w-[85vw] md:max-w-2xl lg:max-w-4xl p-4 sm:p-6 md:p-8 relative">
           <div className="glass-reflection"></div>
           <div className="inner-bevel"></div>
           <CloseButton onClose={() => setIsVisible(false)} />

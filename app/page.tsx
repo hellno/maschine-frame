@@ -1,9 +1,8 @@
 import { fetchMetadata } from "frames.js/next";
 import type { Metadata } from "next";
-import Link from "next/link";
 import { createExampleURL } from "./utils";
-import { Frame } from "./components/Frame";
 import SciFiPostInput from "@/components/SciFiPostInput";
+import { Providers } from "@/components/Providers";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -18,10 +17,11 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function Home() {
   const metadata = await generateMetadata();
 
-  // then, when done, return next frame
   return (
-    <div className="flex flex-col w-full gap-2 mx-auto">
-      <SciFiPostInput />
-    </div>
+    <Providers>
+      <div className="flex flex-col w-full gap-2 mx-auto">
+        <SciFiPostInput />
+      </div>
+    </Providers>
   );
 }

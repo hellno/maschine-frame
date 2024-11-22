@@ -1,3 +1,4 @@
+@import "@rainbow-me/rainbowkit/styles.css";
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap");
 
 @font-face {
@@ -323,10 +324,8 @@
         ),
         linear-gradient(rgba(255, 0, 255, 0.5) 1px, transparent 1px);
     background-size: 4% 4%;
-    transform: perspective(500px) rotateX(75deg) translateY(-100px)
-        translateZ(0);
+    transform: perspective(500px) rotateX(75deg);
     transform-origin: 50% 0;
-    animation: grid-animation 20s linear infinite;
     z-index: 1;
     mask-image: linear-gradient(
         to bottom,
@@ -334,28 +333,35 @@
         rgba(0, 0, 0, 0.8) 30%,
         rgba(0, 0, 0, 0) 100%
     );
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 0.8) 30%,
+        rgba(0, 0, 0, 0) 100%
+    );
     filter: drop-shadow(0 0 2px rgba(255, 0, 255, 0.5));
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    will-change: transform, background-position;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
-/* Add a glow layer */
 .grid-background::before {
     content: "";
     position: absolute;
     inset: 0;
     background: inherit;
-    filter: blur(3px);
-    opacity: 0.5;
-    animation: grid-glow 4s ease-in-out infinite;
+    animation: grid-scroll 20s linear infinite;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    will-change: transform;
 }
 
-/* Add undulating effect layer */
 .grid-background::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: inherit;
-    transform: scaleY(1.02);
-    animation: grid-wave 8s ease-in-out infinite;
+    display: none;
 }
 
 .animated-gradient {
@@ -418,20 +424,17 @@
     position: absolute;
     top: 10px;
     right: 10px;
-    width: 20px;
-    height: 20px;
-    background: linear-gradient(45deg, #ff00ff, #00ffff);
-    border: 2px solid #ffffff;
+    width: 25px;
+    height: 25px;
+    /* background: linear-gradient(45deg, #ff00ff, #00ffff); */
+    border: 2px solid #222222;
     border-radius: 2px;
     font-family: "Press Start 2P", sans-serif;
-    font-size: 12px;
+    font-size: 16px;
     color: #ffffff;
     text-align: center;
     line-height: 16px;
     cursor: pointer;
-    box-shadow:
-        0 0 10px #ff00ff,
-        0 0 20px #00ffff;
     z-index: 20;
 }
 
@@ -460,8 +463,35 @@
     display: inline-flex;
 }
 
+.typing-cursor {
+    position: absolute;
+    display: inline-block;
+    color: #00ffff;
+    font-weight: bold;
+    margin-left: 2px;
+    transform: translateY(-2px);
+    animation: cursor-blink 1s step-end infinite;
+}
+
+@keyframes cursor-blink {
+    0%,
+    50% {
+        opacity: 1;
+    }
+    51%,
+    100% {
+        opacity: 0;
+    }
+}
+
 .glitch-char {
     position: relative;
+    opacity: 0;
+    transition: opacity 0.1s ease;
+}
+
+.glitch-char.glitch-active {
+    opacity: 1;
     animation: glitch-flicker 4s infinite linear;
     animation-delay: calc(var(--char-index, 0) * -0.35s);
     text-shadow:
@@ -469,8 +499,8 @@
         /* light purple glow */ 0 0 4px rgba(173, 140, 255, 0.5); /* subtle light purple bloom */
 }
 
-.glitch-char::before,
-.glitch-char::after {
+.glitch-char.glitch-active::before,
+.glitch-char.glitch-active::after {
     content: attr(data-char);
     position: absolute;
     top: 0;
@@ -614,13 +644,11 @@
     }
 }
 
-@keyframes grid-animation {
-    from {
-        transform: perspective(500px) rotateX(75deg) translateY(-100px)
-            translateZ(0);
+@keyframes grid-scroll {
+    0% {
+        transform: translateY(0);
     }
-    to {
-        transform: perspective(500px) rotateX(75deg) translateY(100px)
-            translateZ(0);
+    100% {
+        transform: translateY(200px);
     }
 }

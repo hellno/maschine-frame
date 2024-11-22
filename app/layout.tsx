@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "../styles/SciFiInput.css";
+import "@rainbow-me/rainbowkit/styles.css";
 
 export const metadata: Metadata = {
-  // without a title, warpcast won't validate your frame
-  title: "frames.js starter",
-  description: "...",
+  title: "@maschine mainframe",
+  description: "hihi :)",
 };
 
 export default function RootLayout({
