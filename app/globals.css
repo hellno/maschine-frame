@@ -1,196 +1,610 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap");
+
+@font-face {
+    font-family: "Arcade Classic";
+    src: url("/fonts/ARCADECLASSIC.TTF") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
 @layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
+    :root {
+        --background: 0 0% 100%;
+        --foreground: 240 10% 3.9%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
- 
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
- 
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
- 
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
- 
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
- 
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
- 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+        --card: 0 0% 100%;
+        --card-foreground: 240 10% 3.9%;
 
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 10% 3.9%;
- 
-    --radius: 0.5rem;
- 
-    --chart-1: 12 76% 61%;
- 
-    --chart-2: 173 58% 39%;
- 
-    --chart-3: 197 37% 24%;
- 
-    --chart-4: 43 74% 66%;
- 
-    --chart-5: 27 87% 67%;
-  }
- 
-  .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
- 
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
- 
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
- 
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
- 
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
- 
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
- 
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
- 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
- 
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-  }
+        --popover: 0 0% 100%;
+        --popover-foreground: 240 10% 3.9%;
+
+        --primary: 240 5.9% 10%;
+        --primary-foreground: 0 0% 98%;
+
+        --secondary: 240 4.8% 95.9%;
+        --secondary-foreground: 240 5.9% 10%;
+
+        --muted: 240 4.8% 95.9%;
+        --muted-foreground: 240 3.8% 46.1%;
+
+        --accent: 240 4.8% 95.9%;
+        --accent-foreground: 240 5.9% 10%;
+
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 0 0% 98%;
+
+        --border: 240 5.9% 90%;
+        --input: 240 5.9% 90%;
+        --ring: 240 10% 3.9%;
+
+        --radius: 0.5rem;
+
+        --chart-1: 12 76% 61%;
+
+        --chart-2: 173 58% 39%;
+
+        --chart-3: 197 37% 24%;
+
+        --chart-4: 43 74% 66%;
+
+        --chart-5: 27 87% 67%;
+    }
+
+    .dark {
+        --background: 240 10% 3.9%;
+        --foreground: 0 0% 98%;
+
+        --card: 240 10% 3.9%;
+        --card-foreground: 0 0% 98%;
+
+        --popover: 240 10% 3.9%;
+        --popover-foreground: 0 0% 98%;
+
+        --primary: 0 0% 98%;
+        --primary-foreground: 240 5.9% 10%;
+
+        --secondary: 240 3.7% 15.9%;
+        --secondary-foreground: 0 0% 98%;
+
+        --muted: 240 3.7% 15.9%;
+        --muted-foreground: 240 5% 64.9%;
+
+        --accent: 240 3.7% 15.9%;
+        --accent-foreground: 0 0% 98%;
+
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 0 0% 98%;
+
+        --border: 240 3.7% 15.9%;
+        --input: 240 3.7% 15.9%;
+        --ring: 240 4.9% 83.9%;
+        --chart-1: 220 70% 50%;
+        --chart-2: 160 60% 45%;
+        --chart-3: 30 80% 55%;
+        --chart-4: 280 65% 60%;
+        --chart-5: 340 75% 55%;
+    }
 }
- 
+
 @layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-}.grid-background {
-  background: 
-    linear-gradient(to right, rgba(0, 255, 255, 0.2) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 255, 255, 0.2) 1px, transparent 1px);
-  background-size: 20px 20px;
-  transform-origin: 0 0;
-  animation: grid-animation 15s linear infinite;
-  mask-image: linear-gradient(to bottom, 
-    rgba(0, 0, 0, 1.0) 0%,
-    rgba(0, 0, 0, 0.9) 50%,
-    rgba(0, 0, 0, 0.5) 80%,
-    rgba(0, 0, 0, 0.1) 100%
-  );
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+    }
+    html {
+        font-family: "Orbitron", "Arcade Classic", system-ui, sans-serif;
+    }
 }
+
+.sci-fi-window {
+    position: relative;
+    background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.85) 0%,
+        rgba(20, 0, 40, 0.85) 50%,
+        rgba(0, 0, 0, 0.85) 100%
+    );
+    background-size: 200% 100%;
+    animation: gradientMove 15s linear infinite;
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    overflow: hidden;
+    z-index: 10;
+    padding: 2rem;
+    margin: 2px;
+
+    /* Enhanced layered shadows and glow */
+    box-shadow:
+        /* Outer neon glow */
+        0 0 15px rgba(255, 0, 255, 0.2),
+        /* Floating shadow */
+        0 20px 40px -10px rgba(0, 0, 255, 0.3),
+        /* Sharp bottom shadow */
+        0 10px 10px -5px rgba(0, 0, 0, 0.5),
+        /* Inner ambient glow */
+        inset 0 2px 20px rgba(255, 255, 255, 0.05);
+
+    /* Bevel base */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Beveled edge effect */
+.sci-fi-window::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.4) 0%,
+        rgba(255, 255, 255, 0.1) 15%,
+        rgba(255, 255, 255, 0.05) 30%,
+        rgba(255, 255, 255, 0.02) 45%,
+        rgba(255, 255, 255, 0.01) 60%,
+        rgba(255, 255, 255, 0.05) 75%,
+        rgba(255, 255, 255, 0.1) 90%
+    );
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: 3;
+}
+
+/* Interactive grab handles */
+.sci-fi-window::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: 
+        /* Top handle */
+        linear-gradient(to right,
+            transparent 0%,
+            transparent 15%,
+            rgba(255, 255, 255, 0.1) 15%,
+            rgba(255, 255, 255, 0.1) 85%,
+            transparent 85%
+        ) top center / 100% 4px no-repeat,
+        /* Bottom handle */
+        linear-gradient(to right,
+            transparent 0%,
+            transparent 15%,
+            rgba(255, 255, 255, 0.1) 15%,
+            rgba(255, 255, 255, 0.1) 85%,
+            transparent 85%
+        ) bottom center / 100% 4px no-repeat,
+        /* Left handle */
+        linear-gradient(to bottom,
+            transparent 0%,
+            transparent 15%,
+            rgba(255, 255, 255, 0.1) 15%,
+            rgba(255, 255, 255, 0.1) 85%,
+            transparent 85%
+        ) left center / 4px 100% no-repeat,
+        /* Right handle */
+        linear-gradient(to bottom,
+            transparent 0%,
+            transparent 15%,
+            rgba(255, 255, 255, 0.1) 15%,
+            rgba(255, 255, 255, 0.1) 85%,
+            transparent 85%
+        ) right center / 4px 100% no-repeat;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 4;
+}
+
+/* Handle hover effects */
+.sci-fi-window:hover::after {
+    background: 
+        /* Top handle */
+        linear-gradient(to right,
+            transparent 0%,
+            transparent 15%,
+            rgba(255, 0, 255, 0.2) 15%,
+            rgba(255, 0, 255, 0.2) 85%,
+            transparent 85%
+        ) top center / 100% 4px no-repeat,
+        /* Bottom handle */
+        linear-gradient(to right,
+            transparent 0%,
+            transparent 15%,
+            rgba(255, 0, 255, 0.2) 15%,
+            rgba(255, 0, 255, 0.2) 85%,
+            transparent 85%
+        ) bottom center / 100% 4px no-repeat,
+        /* Left handle */
+        linear-gradient(to bottom,
+            transparent 0%,
+            transparent 15%,
+            rgba(255, 0, 255, 0.2) 15%,
+            rgba(255, 0, 255, 0.2) 85%,
+            transparent 85%
+        ) left center / 4px 100% no-repeat,
+        /* Right handle */
+        linear-gradient(to bottom,
+            transparent 0%,
+            transparent 15%,
+            rgba(255, 0, 255, 0.2) 15%,
+            rgba(255, 0, 255, 0.2) 85%,
+            transparent 85%
+        ) right center / 4px 100% no-repeat;
+}
+
+/* Glass reflection effect - moved outside main padding */
+.glass-reflection {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 15%,
+        transparent 60%
+    );
+    pointer-events: none;
+    z-index: 1; /* ensure it's above the sun */
+}
+
+/* Inner bevel - adjusted to respect padding */
+.inner-bevel {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 2;
+    background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 5%,
+        transparent 10%
+    );
+}
+
+@keyframes borderGradient {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 400% 0%;
+    }
+}
+
+.sci-fi-input {
+    font-family: "Orbitron", system-ui, sans-serif;
+    letter-spacing: 0.05em;
+}
+
+.sci-fi-button {
+    font-family: "Orbitron", system-ui, sans-serif;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+* {
+    font-family: "Orbitron", system-ui, sans-serif;
+}
+
+.grid-background {
+    position: absolute;
+    top: 33vh;
+    left: -200%;
+    right: -200%;
+    bottom: -50%;
+    width: 500%;
+    background: 
+        linear-gradient(
+            90deg,
+            rgba(255, 0, 255, 0.5) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            rgba(255, 0, 255, 0.5) 1px,
+            transparent 1px
+        );
+    background-size: 4% 4%;
+    transform: perspective(500px)
+               rotateX(75deg)
+               translateY(-100px)
+               translateZ(0);
+    transform-origin: 50% 0;
+    animation: grid-animation 20s linear infinite;
+    z-index: 1;
+    mask-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 0.8) 30%,
+        rgba(0, 0, 0, 0) 100%
+    );
+    filter: drop-shadow(0 0 2px rgba(255, 0, 255, 0.5));
+}
+
+/* Add a glow layer */
+.grid-background::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: inherit;
+    filter: blur(3px);
+    opacity: 0.5;
+    animation: grid-glow 4s ease-in-out infinite;
+}
+
+/* Add undulating effect layer */
+.grid-background::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: inherit;
+    transform: scaleY(1.02);
+    animation: grid-wave 8s ease-in-out infinite;
+}
+
+.animated-gradient {
+    z-index: 0;
+}
+
+.animated-gradient {
+    background: linear-gradient(180deg, 
+        rgba(0, 0, 51, 0.3) 0%,
+        rgba(0, 0, 102, 0.3) 50%,
+        rgba(102, 0, 102, 0.3) 100%
+    );
+    position: absolute;
+    inset: 0;
+}
+
+.retrowave-sun {
+    position: absolute;
+    width: 300px;
+    height: 150px;
+    background: linear-gradient(0deg, rgba(255, 20, 147, 0.4) 0%, rgba(255, 105, 180, 0.4) 100%);
+    border-radius: 150px 150px 0 0;
+    top: calc(33vh - 75px);
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+    opacity: 0.6;
+    z-index: 0;
+    filter: blur(10px);
+}
+
+.retrowave-sun::after {
+    content: "";
+    position: absolute;
+    inset: -20px;
+    background: inherit;
+    filter: blur(20px);
+    opacity: 0.4;
+}
+
+.retrowave-sun::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        transparent 5px,
+        rgba(0, 0, 0, 0.5) 5px,
+        rgba(0, 0, 0, 0.5) 10px
+    );
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(45deg, #ff00ff, #00ffff);
+  border: 2px solid #ffffff;
+  border-radius: 2px;
+  font-family: "Press Start 2P", sans-serif;
+  font-size: 12px;
+  color: #ffffff;
+  text-align: center;
+  line-height: 16px;
+  cursor: pointer;
+  box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
+  z-index: 20;
+}
+
+.close-button:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 5px #ff00ff, 0 0 10px #00ffff;
+}
+
+.scanline {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.2) 0px,
+        rgba(0, 0, 0, 0.2) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    pointer-events: none;
+}
+
 
 .glitch-wrapper {
-  position: relative;
-  display: inline-flex;
+    position: relative;
+    display: inline-flex;
 }
 
 .glitch-char {
-  position: relative;
-  animation: glitch-flicker 4s infinite linear;
-  animation-delay: calc(var(--char-index, 0) * -0.35s);
-  text-shadow: 
-    0 0 2px #AD8CFF, /* light purple glow */
-    0 0 4px rgba(173, 140, 255, 0.5); /* subtle light purple bloom */
+    position: relative;
+    animation: glitch-flicker 4s infinite linear;
+    animation-delay: calc(var(--char-index, 0) * -0.35s);
+    text-shadow:
+        0 0 2px #ad8cff,
+        /* light purple glow */ 0 0 4px rgba(173, 140, 255, 0.5); /* subtle light purple bloom */
 }
 
 .glitch-char::before,
 .glitch-char::after {
-  content: attr(data-char);
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0.8;
+    content: attr(data-char);
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.8;
 }
 
 .glitch-char::before {
-  animation: glitch-char-1 4s infinite;
-  animation-delay: calc((var(--char-index, 0) * -0.35s) - 0.1s);
-  color: #FF6AD5; /* Pink punk */
-  text-shadow: 0 0 2px #C774E8; /* V purple glow */
-  left: 2px;
+    animation: glitch-char-1 4s infinite;
+    animation-delay: calc((var(--char-index, 0) * -0.35s) - 0.1s);
+    color: #ff6ad5; /* Pink punk */
+    text-shadow: 0 0 2px #c774e8; /* V purple glow */
+    left: 2px;
 }
 
 .glitch-char::after {
-  animation: glitch-char-2 4s infinite;
-  animation-delay: calc((var(--char-index, 0) * -0.35s) + 0.1s);
-  color: #94D0FF; /* tear drop */
-  text-shadow: 0 0 2px #8795E8; /* blue suede glow */
-  left: -2px;
+    animation: glitch-char-2 4s infinite;
+    animation-delay: calc((var(--char-index, 0) * -0.35s) + 0.1s);
+    color: #94d0ff; /* tear drop */
+    text-shadow: 0 0 2px #8795e8; /* blue suede glow */
+    left: -2px;
 }
 
 .glitch-space {
-  display: inline-block;
-  width: 0.5em; /* Adjust this value to control space width */
+    display: inline-block;
+    width: 0.5em; /* Adjust this value to control space width */
 }
 
 /* Disable glitch animations for spaces */
 .glitch-space::before,
 .glitch-space::after {
-  display: none;
+    display: none;
 }
 
 @keyframes glitch-flicker {
-  0%, 31%, 35%, 100% { opacity: 1; }
-  33% { opacity: 0.8; }
-  34% { opacity: 0.4; }
+    0%, 89%,  100% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    91% {
+        opacity: 0.4;
+    }
+    92% {
+        opacity: 0.6;
+    }
+    93% {
+        opacity: 0.4;
+    }
+    94% {
+        opacity: 0.4;
+    }
+    95% {
+        opacity: 0.9;
+    }
 }
 
 @keyframes glitch-char-1 {
-  0%, 88%, 100% { opacity: 0; transform: translate(0, 0); }
-  90% { opacity: 1; transform: translate(-2px, -2px); }
-  92% { opacity: 0.8; transform: translate(0, 0); }
-  94% { opacity: 1; transform: translate(2px, 2px); }
-  96% { opacity: 0.8; transform: translate(0, 0); }
-  98% { opacity: 1; transform: translate(-2px, 2px); }
+    0%, 85%,  100% {
+        opacity: 0;
+        transform: translate(0, 0);
+    }
+    86% {
+        opacity: 1;
+        transform: translate(-2px, -2px);
+    }
+    88% {
+        opacity: 0.8;
+        transform: translate(0, 0);
+    }
+    90% {
+        opacity: 1;
+        transform: translate(2px, 2px);
+    }
+    92% {
+        opacity: 0.8;
+        transform: translate(0, 0);
+    }
+    94% {
+        opacity: 1;
+        transform: translate(-2px, 2px);
+    }
+    96% {
+        opacity: 0.4;
+        transform: translate(0, 0);
+    }
+    98% {
+        opacity: 0;
+        transform: translate(0, 0);
+    }
 }
 
 @keyframes glitch-char-2 {
-  0%, 78%, 90%, 100% { opacity: 0; transform: translate(0, 0); }
-  80% { opacity: 1; transform: translate(-1px, 1px); }
-  82% { opacity: 0.8; transform: translate(0, 0); }
-  84% { opacity: 1; transform: translate(1px, -1px); }
-  86% { opacity: 0.8; transform: translate(0, 0); }
-  88% { opacity: 1; transform: translate(1px, 1px); }
+    0%, 75%,  100% {
+        opacity: 0;
+        transform: translate(0, 0);
+    }
+    76% {
+        opacity: 1;
+        transform: translate(-1px, 1px);
+    }
+    78% {
+        opacity: 0.8;
+        transform: translate(0, 0);
+    }
+    80% {
+        opacity: 1;
+        transform: translate(1px, -1px);
+    }
+    82% {
+        opacity: 0.8;
+        transform: translate(0, 0);
+    }
+    84% {
+        opacity: 1;
+        transform: translate(1px, 1px);
+    }
+    86% {
+        opacity: 0.4;
+        transform: translate(0, 0);
+    }
+    88% {
+        opacity: 0;
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 200% 0%;
+    }
 }
 
 @keyframes grid-animation {
-  0% {
-    transform: perspective(500px) rotateX(60deg) translateY(0%);
-  }
-  100% {
-    transform: perspective(500px) rotateX(60deg) translateY(40px);
-  }
+    from {
+        transform: perspective(500px) 
+                  rotateX(75deg) 
+                  translateY(-100px)
+                  translateZ(0);
+    }
+    to {
+        transform: perspective(500px) 
+                  rotateX(75deg) 
+                  translateY(100px)
+                  translateZ(0);
+    }
 }
 
-.grid-overlay {
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 255, 255, 0.1) 50%,
-    rgba(128, 0, 255, 0.2) 100%
-  );
-}

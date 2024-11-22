@@ -5,7 +5,69 @@ import { generateCSRFToken } from "@/utils/csrf";
 import { SciFiNavbar } from "./SciFiNavbar";
 import { GlitchText } from "./GlitchText";
 
+// Background Effects Component
+const RetroBackground = () => (
+  <div className="absolute inset-0 overflow-hidden" style={{ zIndex: 1 }}>
+    <div className="animated-gradient"></div>
+    <div className="grid-background"></div>
+    <div className="retrowave-sun"></div>
+    <div className="scanline"></div>
+  </div>
+);
+
+// Close Button Component
+const CloseButton = ({ onClose }: { onClose: () => void }) => (
+  <button 
+    className="close-button" 
+    onClick={onClose}
+    aria-label="Close window"
+  >
+    ×
+  </button>
+);
+
+// Form Header Component
+const FormHeader = () => (
+  <div className="mb-8">
+    <GlitchText
+      text="@maschine: transmission to farcaster"
+      className="text-3xl font-bold text-cyan-500 mb-2 font-['Orbitron']"
+    />
+    <p className="text-cyan-400 font-['Orbitron'] tracking-wider"></p>
+  </div>
+);
+
+// Transmission Form Component
+const TransmissionForm = ({
+  postContent,
+  setPostContent,
+  handleSubmit,
+}: {
+  postContent: string;
+  setPostContent: (content: string) => void;
+  handleSubmit: (e: React.FormEvent) => Promise<void>;
+}) => (
+  <form onSubmit={handleSubmit} className="relative z-10">
+    <FormHeader />
+    <textarea
+      className="sci-fi-input w-full h-40 p-4 rounded-md font-['Orbitron'] text-lg resize-none mb-6"
+      placeholder="What do you want @maschine to post about?"
+      value={postContent}
+      onChange={(e) => setPostContent(e.target.value)}
+    ></textarea>
+    <div className="flex justify-end">
+      <button
+        type="submit"
+        className="sci-fi-button py-3 px-8 rounded-md text-lg font-['Orbitron'] tracking-wider"
+      >
+        TRANSMIT
+      </button>
+    </div>
+  </form>
+);
+
 export default function SciFiPostInput() {
+  const [isVisible, setIsVisible] = useState(true);
   const [postContent, setPostContent] = useState("");
   const [csrfToken, setCsrfToken] = useState("");
 
@@ -52,41 +114,21 @@ export default function SciFiPostInput() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-900 relative overflow-hidden">
       <SciFiNavbar />
-      <div className="absolute inset-0 overflow-hidden bg-gray-900">
-        <div className="grid-background absolute inset-0"></div>
-        <div className="grid-overlay absolute inset-0"></div>
-      </div>
-      <div className="w-full max-w-4xl p-8 rounded-lg backdrop-blur-xl bg-black/20 relative overflow-hidden glow-effect">
-        <div className="holographic-overlay absolute inset-0 pointer-events-none"></div>
-        <form onSubmit={handleSubmit} className="relative z-10">
-          <div className="mb-8">
-            <GlitchText
-              text="farcaster_transmission for @maschine"
-              className="text-3xl font-bold text-cyan-500 mb-2 font-['Orbitron']"
+      <RetroBackground />
+      {isVisible && (
+        <div className="sci-fi-window w-full max-w-4xl p-8 relative">
+          <div className="glass-reflection"></div>
+          <div className="inner-bevel"></div>
+          <CloseButton onClose={() => setIsVisible(false)} />
+          <div className="relative z-10">
+            <TransmissionForm
+              postContent={postContent}
+              setPostContent={setPostContent}
+              handleSubmit={handleSubmit}
             />
-            <p className="text-cyan-400 font-['Orbitron']"></p>
           </div>
-          <textarea
-            className="sci-fi-input w-full h-40 p-4 rounded-md font-mono text-lg resize-none mb-6"
-            placeholder="What do you want @maschine to post about?"
-            value={postContent}
-            onChange={(e) => setPostContent(e.target.value)}
-          ></textarea>
-          <div className="flex justify-end">
-            <button
-              type="submit"
-              className="sci-fi-button py-3 px-8 rounded-md text-lg font-['Orbitron']"
-            >
-              TRANSMIT
-            </button>
-          </div>
-        </form>
-        <div className="absolute top-4 right-4 flex space-x-2">
-          <div className="w-3 h-3 rounded-full bg-red-500 animate-pulse"></div>
-          <div className="w-3 h-3 rounded-full bg-yellow-500 animate-pulse delay-75"></div>
-          <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse delay-150"></div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
