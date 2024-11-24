@@ -36,5 +36,6 @@ const frameHandler = frames(async (ctx) => {
   };
 });
 
-export const GET = frameHandler;
-export const POST = frameHandler;
+// uncomment to activate frame
+// export const GET = frameHandler;
+// export const POST = frameHandler;
