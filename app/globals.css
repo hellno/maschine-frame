@@ -389,7 +389,7 @@
         rgba(255, 105, 180, 0.4) 100%
     );
     border-radius: 150px 150px 0 0;
-    top: calc(33vh - 150px);
+    top: calc(33vh - 180px);
     left: 50%;
     transform: translateX(-50%);
     overflow: hidden;

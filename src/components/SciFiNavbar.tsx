@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Home, Globe, Radio, Rocket, Zap } from "lucide-react";
+import { Home, Globe, Zap } from "lucide-react";
 import Link from "next/link";
 import { SciFiConnectButton } from "./SciFiConnectButton";
 
@@ -13,15 +13,10 @@ const navItems = [
     label: "Warpcast",
   },
   {
-    icon: Rocket,
-    href: "https://www.youtube.com/watch?v=K48AasRJpag",
-    label: "Rocket",
-  },
-  {
+    href:"https://hypersub.xyz/s/maschine-10v1dj0ipor28",
+    label: "Hypersub",
     icon: Zap,
-    href: "https://zora.co/",
-    label: "Join",
-  },
+  }
 ];
 
 export function SciFiNavbar() {

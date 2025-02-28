@@ -1,6 +1,4 @@
-import { fetchMetadata } from "frames.js/next";
 import type { Metadata } from "next";
-import { createExampleURL } from "./utils";
 import SciFiPostInput from "@/components/SciFiPostInput";
 import { Providers } from "@/components/Providers";
 
@@ -8,9 +6,6 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "@maschine mainframe",
     description: "hihi :)",
-    other: {
-      ...(await fetchMetadata(createExampleURL("/frames"))),
-    },
   };
 }
 
