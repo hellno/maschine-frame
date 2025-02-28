@@ -9,7 +9,7 @@ const frameHandler = frames(async (ctx) => {
     buttons: [
       <Button
         action="link"
-        target="https://warpcast.com/maschine/0x223ce762"
+        target="https://warpcast.com/~/frames/launch?domain=farcasterframeception.vercel.app"
       >
         Let&apos;s build
       </Button>,
